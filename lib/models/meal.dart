@@ -16,19 +16,19 @@ class Meal {
   final bool isLactoseFree;
   final bool isVegan;
   final bool isVegetarian;
-
-  Meal(
-      {required this.id,
-      required this.categories,
-      required this.title,
-      required this.imageUrl,
-      required this.ingredients,
-      required this.steps,
-      required this.duration,
-      required this.isGlutenFree,
-      required this.isLactoseFree,
-      required this.isVegan,
-      required this.isVegetarian,
-      required affordability,
-      required Complexity complexity});
+  Meal({
+    required this.id,
+    required this.categories,
+    required this.title,
+    required this.imageUrl,
+    required this.ingredients,
+    required this.steps,
+    required this.duration,
+    required this.isGlutenFree,
+    required this.isLactoseFree,
+    required this.isVegan,
+    required this.isVegetarian,
+    required affordability,
+    required Complexity complexity,
+  });
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/meals.dart';
-import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widget/common/app_bar.dart';
 
 class MealDetails extends StatelessWidget {
   const MealDetails({super.key});
@@ -32,11 +32,7 @@ class MealDetails extends StatelessWidget {
     String mealID = ModalRoute.of(context)?.settings.arguments as String;
     var meal = mealsSample.firstWhere((meal) => meal.id == mealID);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(meal.title),
-        backgroundColor: Theme.of(context).primaryColorLight,
-        centerTitle: true,
-      ),
+      appBar: DefaultAppBar(title: meal.title),
       body: SingleChildScrollView(
         child: Column(children: [
           SizedBox(
@@ -67,15 +63,26 @@ class MealDetails extends StatelessWidget {
           buildContainer(
             ListView.builder(
               itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(child: Text('# ${index + 1}')),
-                  title: Text(meal.steps[index]),
+                return Column(
+                  children: [
+                    ListTile(
+                      leading: CircleAvatar(child: Text('# ${index + 1}')),
+                      title: Text(meal.steps[index]),
+                    ),
+                    const Divider(
+                      thickness: 2,
+                    )
+                  ],
                 );
               },
               itemCount: meal.steps.length,
             ),
-          )
+          ),
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.of(context).pop(mealID),
+        child: const Icon(Icons.delete),
       ),
     );
   }

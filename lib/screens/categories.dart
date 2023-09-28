@@ -4,16 +4,11 @@ import 'package:meals_app/widget/category/category_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
-  static const routeName = "/";
+  static const routeName = "/categories";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('MealApp'),
-          backgroundColor: Theme.of(context).primaryColorLight,
-        ),
         body: Container(
             padding: const EdgeInsets.all(15),
             child: GridView(

@@ -47,7 +47,13 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void selectMeal() {
-      Navigator.of(context).pushNamed(MealDetails.routeName, arguments: id);
+      Navigator.of(context)
+          .pushNamed(MealDetails.routeName, arguments: id)
+          .then((result) {
+        if (result != null) {
+          print(result);
+        }
+      });
     }
 
     return InkWell(
@@ -84,19 +90,22 @@ class MealItem extends StatelessWidget {
                   },
                 ),
               ),
-              Positioned(
-                bottom: 20,
-                right: 10,
+              Positioned.fill(
                 child: Container(
-                  width: 250,
                   color: Colors.black54,
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
-                  child: Text(
-                    title,
-                    style: const TextStyle(fontSize: 26, color: Colors.white),
-                    softWrap: true,
-                    overflow: TextOverflow.fade,
+                  child: Center(
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                          fontSize: 26,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                      softWrap: true,
+                      overflow: TextOverflow.fade,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
               ),
